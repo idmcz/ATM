@@ -35,4 +35,14 @@ public class ATM {
 		}
 		return false;
 	}
+	
+	public boolean withdrawMoney (int accountNum, double withdraw) {
+		if (hashie.containsKey(accountNum)&& withdraw<hashie.get(accountNum)) {
+			double cur = hashie.get(accountNum); 
+			hashie.put (accountNum, cur - withdraw);
+			return true;
+		}
+		return false;
+	}
+	
 }
