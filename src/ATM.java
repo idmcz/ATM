@@ -1,10 +1,10 @@
 import java.util.HashMap;
 
 public class ATM {
-	HashMap<Integer, Double> hashie = new HashMap<Integer, Double>();
+	HashMap<Integer, Double> hashie;
 	
 	public ATM () {
-		
+		hashie = new HashMap<Integer, Double>();
 	}
 	
 	public void openAccount (int accountNum) {
