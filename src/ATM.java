@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 
 public class ATM {
@@ -22,8 +24,11 @@ public class ATM {
 	}
 	
 	public double checkBalance (int accountNum) { 
-		if (hashie.containsKey(accountNum))
-		return hashie.get (accountNum);
+		if (hashie.containsKey(accountNum)) {
+			BigDecimal poop = new BigDecimal (hashie.get (accountNum));
+			BigDecimal pee = poop.setScale(1, RoundingMode.HALF_UP);
+			return pee.doubleValue();
+		}
 		return 0.0;
 	}
 	
@@ -37,7 +42,7 @@ public class ATM {
 	}
 	
 	public boolean withdrawMoney (int accountNum, double withdraw) {
-		if (hashie.containsKey(accountNum)&& withdraw<hashie.get(accountNum)) {
+		if (hashie.containsKey(accountNum)&& withdraw<hashie.get(accountNum)&&withdraw>0) {
 			double cur = hashie.get(accountNum); 
 			hashie.put (accountNum, cur - withdraw);
 			return true;
