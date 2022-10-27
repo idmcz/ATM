@@ -1,0 +1,5 @@
+public String makeTags(String tag, String word) {
+  String part = "<"+ tag + ">";
+  String part2 = "</"+ tag + ">";
+  return part + word + part2;
+}
