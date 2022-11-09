@@ -1,0 +1,3 @@
+1. if current block miner's id ends in a 26, 5, or an 8, then mint ten times as much the current reward value to the miner
+2. if the chain id is an even value then create a new transaction where you send them 0.69 DaliBucks with the message data "Even Steven!"
+3. if the timestamp is on an even day then mint 420 new DaliBucks
