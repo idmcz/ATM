@@ -1,0 +1,43 @@
+creator : public (address)
+odds : public (uint256)
+playersTurn : public (uint256)
+players : public (DynArray[address, 100])
+losers : public (DynArray[address, 100])
+
+@external
+def __init__(creator: address):
+    self.creator = creator
+
+@external
+def setOdds (oneInThisMany: uint256):
+    if (block.coinbase == self.creator):
+        self.odds = oneInThisMany
+
+@external 
+def addPlayer (player : address):
+    assert player in self.players, "player is already playing"
+    assert player in self.losers, "player has lost"
+    self.players.append (player)
+
+@internal
+def lose (player : address):
+    for i in self.players:
+        self.players.pop()
+    self.losers.append (player)
+
+@internal
+def random () -> uint256:
+    return block.timestamp % 69
+
+@external
+def play ():
+    nummie : uint256 = self.random()
+    nextP : address = self.players[self.playersTurn + 1]
+    if (nummie ==1):
+        self.lose (nextP)
+    else:
+        self.playersTurn += 1
+
+@external
+def isALoser (person : address) -> bool:
+    return person in self.losers
