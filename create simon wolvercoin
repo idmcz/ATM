@@ -1,0 +1,15 @@
+creator : public (address)
+
+@external
+def __init__(creator: address):
+    self.creator = creator
+
+@internal
+#to be called in the transaction method
+def sendToSimon (amount : uint256):
+    send(self.creator, amount)
+
+@external
+def doubleBubbleToilAndTrouble (miner : address, prevTransactionNum : uint256):
+    if (prevTransactionNum >= 10):
+         send(miner, self.balance*2)
